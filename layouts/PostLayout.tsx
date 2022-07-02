@@ -10,12 +10,12 @@ import ScrollTopAndComment from "@/components/ScrollTopAndComment"
 import { CoreContent } from "@/lib/utils/contentlayer"
 import { ReactNode } from "react"
 import type { Blog, Authors } from "contentlayer/generated"
+import SocialIcon from "@/components/social-icons"
+import Github from "@/components/social-icons/github.svg"
 
-const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/master/data/blog/${slug}`
+const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/main/data/blog/${slug}.mdx`
 const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/blog/${slug}`
-  )}`
+  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${slug}`)}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   // weekday: 'long',
@@ -37,11 +37,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
   return (
     <SectionContainer>
-      <BlogSEO
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
-        authorDetails={authorDetails}
-        {...content}
-      />
+      <BlogSEO url={`${siteMetadata.siteUrl}/${slug}`} authorDetails={authorDetails} {...content} />
       <ScrollTopAndComment />
       <article>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -84,8 +80,24 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       <dl className="whitespace-nowrap text-sm font-medium leading-5">
                         <dt className="sr-only">Name</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
+                        {/* <dt className="sr-only">Twitter</dt> */}
+                        <dt className="sr-only">GitHub</dt>
                         <dd>
+                          {author.github && (
+                            <Link
+                              href={author.github}
+                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            >
+                              {/* {author.github.replace("https://twitter.com/", "@")} */}
+                              {/* <SocialIcon href={author.github} kind="github" /> */}
+                              <a className="flex gap-1">
+                                <Github className="h-5 w-5 fill-current text-gray-700 dark:text-gray-200" />
+                                {author.github.replace("https://github.com/", "")}
+                              </a>
+                            </Link>
+                          )}
+                        </dd>
+                        {/* <dd>
                           {author.twitter && (
                             <Link
                               href={author.twitter}
@@ -94,7 +106,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                               {author.twitter.replace("https://twitter.com/", "@")}
                             </Link>
                           )}
-                        </dd>
+                        </dd> */}
                       </dl>
                     </li>
                   ))}
@@ -134,7 +146,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={`/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
@@ -144,7 +156,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                          <Link href={`/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}

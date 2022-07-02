@@ -22,7 +22,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
 
   return (
     <SectionContainer>
-      <BlogSEO url={`${siteMetadata.siteUrl}/blog/${slug}`} {...content} />
+      <BlogSEO url={`${siteMetadata.siteUrl}/${slug}`} {...content} />
       <ScrollTopAndComment />
       <article>
         <div>
@@ -54,7 +54,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
                 {prev && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/blog/${prev.slug}`}
+                      href={`/${prev.slug}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                     >
                       &larr; {prev.title}
@@ -64,7 +64,7 @@ export default function PostLayout({ content, next, prev, children }: Props) {
                 {next && (
                   <div className="pt-4 xl:pt-8">
                     <Link
-                      href={`/blog/${next.slug}`}
+                      href={`/${next.slug}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                     >
                       {next.title} &rarr;
