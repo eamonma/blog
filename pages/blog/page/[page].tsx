@@ -1,11 +1,11 @@
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
-import { allCoreContent } from '@/lib/utils/contentlayer'
-import { POSTS_PER_PAGE } from '../../blog'
-import { InferGetStaticPropsType } from 'next'
-import { allBlogs } from 'contentlayer/generated'
-import { sortedBlogPost } from '../../../lib/utils/contentlayer'
+import { PageSEO } from "@/components/SEO"
+import siteMetadata from "@/data/siteMetadata"
+import ListLayout from "@/layouts/ListLayout"
+import { allCoreContent } from "@/lib/utils/contentlayer"
+import { POSTS_PER_PAGE } from "../../blog"
+import { InferGetStaticPropsType } from "next"
+import { allBlogs } from "contentlayer/generated"
+import { sortedBlogPost } from "../../../lib/utils/contentlayer"
 
 export const getStaticPaths = async () => {
   const totalPosts = allBlogs

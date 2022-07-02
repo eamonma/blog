@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import siteMetadata from '@/data/siteMetadata'
-import { CoreContent } from '@/lib/utils/contentlayer'
-import type { Blog, Authors } from 'contentlayer/generated'
+import Head from "next/head"
+import { useRouter } from "next/router"
+import siteMetadata from "@/data/siteMetadata"
+import { CoreContent } from "@/lib/utils/contentlayer"
+import type { Blog, Authors } from "contentlayer/generated"
 interface CommonSEOProps {
   title: string
   description: string
@@ -10,7 +10,7 @@ interface CommonSEOProps {
   ogImage:
     | string
     | {
-        '@type': string
+        "@type": string
         url: string
       }[]
   twImage: string
@@ -118,13 +118,13 @@ export const BlogSEO = ({
   const imagesArr =
     images.length === 0
       ? [siteMetadata.socialBanner]
-      : typeof images === 'string'
+      : typeof images === "string"
       ? [images]
       : images
 
   const featuredImages = imagesArr.map((img) => {
     return {
-      '@type': 'ImageObject',
+      "@type": "ImageObject",
       url: `${siteMetadata.siteUrl}${img}`,
     }
   })
@@ -133,23 +133,23 @@ export const BlogSEO = ({
   if (authorDetails) {
     authorList = authorDetails.map((author) => {
       return {
-        '@type': 'Person',
+        "@type": "Person",
         name: author.name,
       }
     })
   } else {
     authorList = {
-      '@type': 'Person',
+      "@type": "Person",
       name: siteMetadata.author,
     }
   }
 
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    "@context": "https://schema.org",
+    "@type": "Article",
     mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
+      "@type": "WebPage",
+      "@id": url,
     },
     headline: title,
     image: featuredImages,
@@ -157,10 +157,10 @@ export const BlogSEO = ({
     dateModified: modifiedAt,
     author: authorList,
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: siteMetadata.author,
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
       },
     },

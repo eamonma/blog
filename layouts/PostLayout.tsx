@@ -1,15 +1,15 @@
-import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
-import { BlogSEO } from '@/components/SEO'
-import Image from '@/components/Image'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import Comments from '@/components/comments'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { CoreContent } from '@/lib/utils/contentlayer'
-import { ReactNode } from 'react'
-import type { Blog, Authors } from 'contentlayer/generated'
+import Link from "@/components/Link"
+import PageTitle from "@/components/PageTitle"
+import SectionContainer from "@/components/SectionContainer"
+import { BlogSEO } from "@/components/SEO"
+import Image from "@/components/Image"
+import Tag from "@/components/Tag"
+import siteMetadata from "@/data/siteMetadata"
+import Comments from "@/components/comments"
+import ScrollTopAndComment from "@/components/ScrollTopAndComment"
+import { CoreContent } from "@/lib/utils/contentlayer"
+import { ReactNode } from "react"
+import type { Blog, Authors } from "contentlayer/generated"
 
 const editUrl = (slug) => `${siteMetadata.siteRepo}/blob/master/data/blog/${slug}`
 const discussUrl = (slug) =>
@@ -19,9 +19,9 @@ const discussUrl = (slug) =>
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   // weekday: 'long',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
 }
 
 interface Props {
@@ -52,7 +52,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                     <time dateTime={date}>
-                      {new Date(date).toLocaleDateString('fr-CA', postDateTemplate)}
+                      {new Date(date).toLocaleDateString("fr-CA", postDateTemplate)}
                     </time>
                   </dd>
                 </div>
@@ -64,7 +64,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           </header>
           <div
             className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
-            style={{ gridTemplateRows: 'auto 1fr' }}
+            style={{ gridTemplateRows: "auto 1fr" }}
           >
             <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
               <dt className="sr-only">Authors</dt>
@@ -91,7 +91,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                               href={author.twitter}
                               className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                             >
-                              {author.twitter.replace('https://twitter.com/', '@')}
+                              {author.twitter.replace("https://twitter.com/", "@")}
                             </Link>
                           )}
                         </dd>
@@ -101,14 +101,14 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y font-serif divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark text-lg">{children}</div>
+            <div className="divide-y divide-gray-200 font-serif dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
+              <div className="prose max-w-none pt-10 pb-8 text-lg dark:prose-dark">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(slug)} rel="nofollow">
-                  {'Discuss on Twitter'}
+                  {"Discuss on Twitter"}
                 </Link>
                 {` • `}
-                <Link href={editUrl(slug)}>{'View on GitHub'}</Link>
+                <Link href={editUrl(slug)}>{"View on GitHub"}</Link>
               </div>
               <Comments frontMatter={content} />
             </div>

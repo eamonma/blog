@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from "next"
 
 /* eslint-disable import/no-anonymous-default-export */
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { email } = req.body
   if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
+    return res.status(400).json({ error: "Email is required" })
   }
 
   try {
@@ -13,10 +13,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await fetch(
       `https://a.klaviyo.com/api/v2/list/${LIST_ID}/subscribe?api_key=${API_KEY}`,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         // You can add additional params here i.e. SMS, etc.
         // https://developers.klaviyo.com/en/reference/subscribe
@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         error: `There was an error subscribing to the list.`,
       })
     }
-    return res.status(201).json({ error: '' })
+    return res.status(201).json({ error: "" })
   } catch (error) {
     return res.status(500).json({ error: error.message || error.toString() })
   }

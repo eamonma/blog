@@ -1,11 +1,11 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import kebabCase from '@/lib/utils/kebabCase'
-import { getAllTags } from '@/lib/utils/contentlayer'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { allBlogs } from 'contentlayer/generated'
+import Link from "@/components/Link"
+import { PageSEO } from "@/components/SEO"
+import Tag from "@/components/Tag"
+import siteMetadata from "@/data/siteMetadata"
+import kebabCase from "@/lib/utils/kebabCase"
+import { getAllTags } from "@/lib/utils/contentlayer"
+import { GetStaticProps, InferGetStaticPropsType } from "next"
+import { allBlogs } from "contentlayer/generated"
 
 // TODO: refactor into contentlayer once compute over all docs is enabled
 
@@ -27,7 +27,7 @@ export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticP
           </h1>
         </div>
         <div className="flex max-w-lg flex-wrap">
-          {Object.keys(tags).length === 0 && 'No tags found.'}
+          {Object.keys(tags).length === 0 && "No tags found."}
           {sortedTags.map((t) => {
             return (
               <div key={t} className="mt-2 mb-2 mr-5">

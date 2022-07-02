@@ -1,10 +1,10 @@
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import { ComponentProps, useState } from 'react'
-import Pagination from '@/components/Pagination'
-import formatDate from '@/lib/utils/formatDate'
-import { CoreContent } from '@/lib/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
+import Link from "@/components/Link"
+import Tag from "@/components/Tag"
+import { ComponentProps, useState } from "react"
+import Pagination from "@/components/Pagination"
+import formatDate from "@/lib/utils/formatDate"
+import { CoreContent } from "@/lib/utils/contentlayer"
+import type { Blog } from "contentlayer/generated"
 
 interface Props {
   posts: CoreContent<Blog>[]
@@ -14,9 +14,9 @@ interface Props {
 }
 
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }: Props) {
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState("")
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags.join(' ')
+    const searchContent = post.title + post.summary + post.tags.join(" ")
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -37,7 +37,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles"
-              className="block w-full rounded-md border border-gray-300 bg-white pl-10 px-4 py-2 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+              className="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 pl-10 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
             />
             <svg
               className="absolute left-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
@@ -56,7 +56,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           </div>
         </div>
         <ul>
-          {!filteredBlogPosts.length && 'No posts found.'}
+          {!filteredBlogPosts.length && "No posts found."}
           {displayPosts.map((post) => {
             const { slug, date, title, summary, tags } = post
             return (

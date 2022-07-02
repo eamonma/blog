@@ -1,10 +1,10 @@
-import { TagSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
-import kebabCase from '@/lib/utils/kebabCase'
-import { getAllTags, allCoreContent } from '@/lib/utils/contentlayer'
-import { InferGetStaticPropsType } from 'next'
-import { allBlogs } from 'contentlayer/generated'
+import { TagSEO } from "@/components/SEO"
+import siteMetadata from "@/data/siteMetadata"
+import ListLayout from "@/layouts/ListLayout"
+import kebabCase from "@/lib/utils/kebabCase"
+import { getAllTags, allCoreContent } from "@/lib/utils/contentlayer"
+import { InferGetStaticPropsType } from "next"
+import { allBlogs } from "contentlayer/generated"
 
 export async function getStaticPaths() {
   const tags = await getAllTags(allBlogs)
@@ -32,7 +32,7 @@ export const getStaticProps = async (context) => {
 
 export default function Tag({ posts, tag }: InferGetStaticPropsType<typeof getStaticProps>) {
   // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
+  const title = tag[0].toUpperCase() + tag.split(" ").join("-").slice(1)
   return (
     <>
       <TagSEO
